@@ -23,7 +23,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /** macro para usar en los archivos de rutas, y bloquear accesos no autorizados */
+        Route::macro('catch', function ($action) {
+            $this->any('{anything}', $action)->where('anything', '.*')->fallback();
+        });
 
         parent::boot();
     }
@@ -38,6 +41,12 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+
+        $this->mapAdminRoutes();
+
+        $this->mapCustomerRoutes();
+
+        $this->mapAgentRoutes();
 
         //
     }
@@ -54,6 +63,51 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::middleware(['web', 'auth', 'admin'])
+             ->namespace($this->namespace.'\Admin')
+             ->prefix('/admin')
+             ->group(base_path('routes/admin.php'));
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapCustomerRoutes()
+    {
+        Route::middleware(['web', 'auth','customer'])
+             ->namespace($this->namespace.'\Customer')
+             ->prefix('/customer')
+             ->group(base_path('routes/customer.php'));
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAgentRoutes()
+    {
+        Route::middleware(['web', 'auth', 'agent'])
+             ->namespace($this->namespace.'\Agent')
+             ->prefix('/agent')
+             ->group(base_path('routes/agent.php'));
     }
 
     /**
