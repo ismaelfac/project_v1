@@ -23,7 +23,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /** macro para usar en los archivos de rutas, y bloquear accesos no autorizados */
+        Route::macro('catch', function ($action) {
+            $this->any('{anything}', $action)->where('anything', '.*')->fallback();
+        });
 
         parent::boot();
     }
