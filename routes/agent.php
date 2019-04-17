@@ -1,3 +1,3 @@
 <?php
 
-Route::get('/','DashboardController@index')->name('admin_dashboard');
+Route::get('/','DashboardController@index')->name('agent_dashboard');

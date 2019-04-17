@@ -86,7 +86,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapCustomerRoutes()
     {
-        Route::middleware(['web', 'auth'])
+        Route::middleware(['web', 'auth','customer'])
              ->namespace($this->namespace.'\Customer')
              ->prefix('/customer')
              ->group(base_path('routes/customer.php'));
@@ -101,7 +101,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapAgentRoutes()
     {
-        Route::middleware(['web', 'auth'])
+        Route::middleware(['web', 'auth', 'agent'])
              ->namespace($this->namespace.'\Agent')
              ->prefix('/agent')
              ->group(base_path('routes/agent.php'));

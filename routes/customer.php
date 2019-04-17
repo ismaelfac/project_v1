@@ -1,4 +1,4 @@
 <?php
 
 
-Route::get('/','DashboardController@index')->name('admin_dashboard');
+Route::get('/','DashboardController@index')->name('customer_dashboard');
