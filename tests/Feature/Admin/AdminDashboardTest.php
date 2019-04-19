@@ -14,7 +14,7 @@ class AdminDashboardTest extends TestCase
     /** @test */
     function admins_can_visit_the_admin_dashboard()
     {   
-        $admin = factory(User::class)->create([ 'admin' => true ]);
+        $admin = $this->createAdmin();
         $this->actingAs($admin)
             ->get(route('admin_dashboard'))
             ->assertStatus(200)
