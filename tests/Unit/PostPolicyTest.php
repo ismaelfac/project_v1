@@ -10,6 +10,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostPolicyTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
     function admins_can_update_post()
     {
@@ -38,7 +40,8 @@ class PostPolicyTest extends TestCase
         $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         // Act
-        $result = $admin->can('update-post', $post);
+        $result = $user->can('update-post', $post);
+        dd($result);
 
         // Assert
         $this->assertTrue($result);
