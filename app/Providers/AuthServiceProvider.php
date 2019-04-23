@@ -26,6 +26,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('update-post', function(User $user, Post $post){
+            dd($post);
             return $user->role === 'admin' || $user->id === $post->user_id;
         });
     }
