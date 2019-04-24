@@ -42,8 +42,9 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function owns(Model $model, $foreignKey = 'user_id') {
+    public function owns(Model $model, $foreignKey = 'user_id')
+    {
         //dd($this->id.'-'.$model->user_id);
-        return $this->id === $model->foreignKey;
+        return $this->id === $model->$foreignKey;
     }
 }

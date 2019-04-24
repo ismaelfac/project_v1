@@ -10,3 +10,5 @@ $factory->define(Post::class, function (Faker $faker) {
         'user_id' => factory(User::class),
     ];
 });
+$factory->state(Post::class, 'unpublished', ['status' => 'unpublished']);
+$factory->state(Post::class, 'published', ['status' => 'published']);

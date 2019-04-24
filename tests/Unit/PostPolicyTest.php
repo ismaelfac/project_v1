@@ -20,7 +20,7 @@ class PostPolicyTest extends TestCase
 
         $this->be($admin);
 
-        $post = new Post;
+        $post = factory(Post::class)->create();
 
         // Act
         $result = $admin->can('update-post', $post);
@@ -34,24 +34,70 @@ class PostPolicyTest extends TestCase
     {
         //Arrange
         $user = $this->createUser();
-
         $this->be($user);
-
         $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         // Act
         $result = $user->can('update-post', $post);
-        dd($result);
+        //dd($result);
 
         // Assert
         $this->assertTrue($result);
     }
 
     /** @test */
+    function authors_can_delete_posts()
+    {
+        //Arrange
+        $user = $this->createUser();
+        $this->be($user);
+        $post = factory(Post::class)->states('published')->create(['user_id' => $user->id]);
+
+        // Act
+        $result = $user->can('delete-post', $post);
+        //dd($result);
+
+        // Assert
+        $this->assertTrue($result);
+    }
+
+    /** @test */
+    function authors_can_update_unpublished_posts()
+    {
+        //Arrange
+        $user = $this->createUser();
+        $this->be($user);
+        $post = factory(Post::class)->states('unpublished')->create(['user_id' => $user->id]);
+
+        // Act
+        $result = $user->can('update-post', $post);
+        //dd($result);
+
+        // Assert
+        $this->assertTrue($result);
+    }
+    
+    /** @test */
+    function unathorized_users_cannot_update_posts()
+    {
+        //Arrange
+        $user = $this->createUser();
+
+        $this->be($user);
+
+        $post = factory(Post::class)->create();
+        // Act
+        $result = $user->cannot('update-post', $post);
+        //dd($result);
+
+        // Assert
+        $this->assertTrue($result);
+    } 
+    /** @test */
     function guests_cannot_update_post()
     {
         //Arrange
-        $post = new Post;
+        $post = factory(Post::class)->create();
 
         // Act
         $result = Gate::allows('update-post', $post);
