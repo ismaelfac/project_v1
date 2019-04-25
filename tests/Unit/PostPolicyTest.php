@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostPolicyTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     /** @test */
     function admins_can_update_post()
@@ -23,7 +23,7 @@ class PostPolicyTest extends TestCase
         $post = factory(Post::class)->create();
 
         // Act
-        $result = $admin->can('update-post', $post);
+        $result = $admin->can('update', $post);
 
         // Assert
         $this->assertTrue($result);
@@ -38,7 +38,7 @@ class PostPolicyTest extends TestCase
         $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         // Act
-        $result = $user->can('update-post', $post);
+        $result = $user->can('update', $post);
         //dd($result);
 
         // Assert
@@ -51,10 +51,10 @@ class PostPolicyTest extends TestCase
         //Arrange
         $user = $this->createUser();
         $this->be($user);
-        $post = factory(Post::class)->states('published')->create(['user_id' => $user->id]);
+        $post = factory(Post::class)->states('unpublished')->create(['user_id' => $user->id]);
 
         // Act
-        $result = $user->can('delete-post', $post);
+        $result = $user->can('delete', $post);
         //dd($result);
 
         // Assert
@@ -70,7 +70,7 @@ class PostPolicyTest extends TestCase
         $post = factory(Post::class)->states('unpublished')->create(['user_id' => $user->id]);
 
         // Act
-        $result = $user->can('update-post', $post);
+        $result = $user->can('update', $post);
         //dd($result);
 
         // Assert
@@ -87,7 +87,7 @@ class PostPolicyTest extends TestCase
 
         $post = factory(Post::class)->create();
         // Act
-        $result = $user->cannot('update-post', $post);
+        $result = $user->cannot('update', $post);
         //dd($result);
 
         // Assert
@@ -100,7 +100,7 @@ class PostPolicyTest extends TestCase
         $post = factory(Post::class)->create();
 
         // Act
-        $result = Gate::allows('update-post', $post);
+        $result = Gate::allows('update', $post);
 
         // Assert
         $this->assertFalse($result);
