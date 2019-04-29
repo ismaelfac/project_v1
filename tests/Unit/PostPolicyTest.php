@@ -13,7 +13,7 @@ class PostPolicyTest extends TestCase
     //use RefreshDatabase;
 
     /** @test */
-    function admins_can_update_post()
+    function admins_can_update_post_unit()
     {
         //Arrange
         $admin = $this->createAdmin();
