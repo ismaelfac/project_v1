@@ -11,17 +11,17 @@ class UpdatePostTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function adminsCanUpdatePosts()
+    function adminsCanUpdatePosts()
     {
         $this->withoutExceptionHandling();
         $post = factory(Post::class)->create();
         $admin = $this->createAdmin();
-        $this->be($admin);
+
         $response = $this->put("admin/posts/{$post->id}", [
-            'title' => 'Updated post title',
+            'title' => 'Updated post title'
         ]);
         $response->assertStatus(200)
-            ->assertSee('Post updated!');
+            ->assertSee('Post Updated!');
         $this->assertDatabaseHas('posts', [
             'id' => $post->id,
             'title' => 'Updated post title',
