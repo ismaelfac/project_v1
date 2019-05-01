@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UpdatePostTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     /** @test */
     function adminsCanUpdatePosts()
@@ -16,10 +16,11 @@ class UpdatePostTest extends TestCase
         $this->withoutExceptionHandling();
         $post = factory(Post::class)->create();
         $admin = $this->createAdmin();
-
+        //dd($post.'-'.$admin);
         $response = $this->put("admin/posts/{$post->id}", [
             'title' => 'Updated post title'
         ]);
+        dd($response);
         $response->assertStatus(200)
             ->assertSee('Post Updated!');
         $this->assertDatabaseHas('posts', [
