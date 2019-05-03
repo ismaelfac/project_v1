@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostPolicyTest extends TestCase
 {
-    //use RefreshDatabase;
+    use RefreshDatabase;
 
     /** @test */
     function admins_can_update_post_unit()
@@ -30,7 +30,7 @@ class PostPolicyTest extends TestCase
     }
 
     /** @test */
-    function authors_can_update_posts()
+    function authors_can_update_posts_unit()
     {
         //Arrange
         $user = $this->createUser();

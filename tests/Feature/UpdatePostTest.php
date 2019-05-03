@@ -14,9 +14,10 @@ class UpdatePostTest extends TestCase
     function adminsCanUpdatePosts()
     {
         $this->withoutExceptionHandling();
+
         $post = factory(Post::class)->create();
         $admin = $this->createAdmin();
-        //dd($post.'-'.$admin);
+        dd($post.'- usuario'.$admin);
         $response = $this->put("admin/posts/{$post->id}", [
             'title' => 'Updated post title'
         ]);
