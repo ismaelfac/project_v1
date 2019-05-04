@@ -1,11 +1,8 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "description": "Base Project.",
+    "keywords": [],
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
@@ -13,6 +10,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "silber/bouncer": "v1.0.0-rc.5",
         "spatie/laravel-backup": "^6.2"
     },
     "require-dev": {
