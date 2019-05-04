@@ -17,11 +17,9 @@ class UpdatePostTest extends TestCase
 
         $post = factory(Post::class)->create();
         $admin = $this->createAdmin();
-        dd($post.'- usuario'.$admin);
-        $response = $this->put("admin/posts/{$post->id}", [
-            'title' => 'Updated post title'
-        ]);
-        dd($response);
+        //dd($post.'- usuario'.$admin);
+    
+        $response = $this->put("admin/posts/{$post->id}", ['title' => 'Updated Post Title']);
         $response->assertStatus(200)
             ->assertSee('Post Updated!');
         $this->assertDatabaseHas('posts', [
