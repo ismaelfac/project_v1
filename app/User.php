@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRolesAndAbilities;
+    use Notifiable, HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +39,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'state' => 'boolean'
     ];
+
+    public function Roles()
+    {
+        $roles = auth()->user()->roles;
+    }
 
 
     public function isInactive()
