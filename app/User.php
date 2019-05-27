@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRolesAndPermissions;
+    use Notifiable, SoftDeletes,HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'state',
+        'name', 'email', 'password', 'state', 'is_active'
     ];
 
     /**
@@ -37,28 +38,35 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'state' => 'boolean'
+        'state' => 'boolean',
+        'is_active' => 'boolean'
     ];
 
-    public function Roles()
+    public function posts()
     {
-        $roles = auth()->user()->roles;
+        return $this->hasMany(Post::class);
     }
-
 
     public function isInactive()
     {
         return $this->state === false;
     }
 
-    public function isAdmin() 
+    public function owns(Model $model)
     {
-        return $this->role === 'admin';
+        return $this->id === $model->user_id;
     }
-
-    public function owns(Model $model, $foreignKey = 'user_id')
+    
+    public function scopeName($query, $name)
     {
-        //dd($this->id.'-'.$model->user_id);
-        return $this->id === $model->$foreignKey;
+        if (trim($name) != "") {
+            $query->where('name', 'LIKE', '%' . $name . '%');
+        }
+    }
+    public function scopeEmail($query, $email)
+    {
+        if (trim($email) != "") {
+            $query->where('email', 'LIKE', '%' . $email . '%');
+        }
     }
 }
