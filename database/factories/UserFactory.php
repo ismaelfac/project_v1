@@ -27,6 +27,3 @@ $factory->define(User::class, function (Faker $faker) {
         'state' => true
     ];
 });
-$factory->state(User::class, 'admin', function (Faker $faker) {
-    return ['role' => 'admin'];
-});

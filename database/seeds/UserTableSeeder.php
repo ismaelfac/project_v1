@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Caffeinated\Shinobi\Models\Role;
 
@@ -42,23 +43,23 @@ class UserTableSeeder extends Seeder
             'name' => 'ISMAEL E. LASTRE ALVAREZ',
             'email' => 'ismaelfac@gmail.com',
             'password' => bcrypt('BrwQ12-123'),
-            'active' => true
+            'is_active' => true
         ]);
-        $user->roles()->sync([1 => ['active' => true]]); //update roles
+        $user->roles()->sync([1 => ['is_active' => true]]); //update roles
         $user = User::create([
             'name' => 'SINFOROSO GUMERSINDO',
             'email' => 'director@mail.com',
             'password' => bcrypt('123'),
-            'active' => true
+            'is_active' => true
         ]);
-        $user->roles()->sync([1 => ['active' => true]]); //update roles
+        $user->roles()->sync([1 => ['is_active' => true]]); //update roles
         $user = User::create([
             'name' => 'EMPERATRIS BENAVIDEZ ',
             'email' => 'asistentecomercial@MAIL.com',
             'password' => bcrypt('123'),
-            'active' => true
+            'is_active' => true
         ]);
-        $user->roles()->sync([3 => ['active' => true],4]); //update roles 3, 4 en usuario3
+        $user->roles()->sync([3 => ['is_active' => true],4]); //update roles 3, 4 en usuario3
     
     }
 }

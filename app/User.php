@@ -42,6 +42,8 @@ class User extends Authenticatable
         'is_active' => 'boolean'
     ];
 
+    protected $dates = ['deleted_at'];
+    
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -56,7 +58,7 @@ class User extends Authenticatable
     {
         return $this->id === $model->user_id;
     }
-    
+
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {
