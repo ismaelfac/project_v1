@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
             'roles',
             'role_user',
             'customers',
-            'posts',
             'identifications',
             'neighborhoods',
             'locations',
