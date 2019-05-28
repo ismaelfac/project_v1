@@ -18,10 +18,27 @@ class DatabaseSeeder extends Seeder
             'permission_role',
             'permissions',
             'roles',
-            'role_user'
+            'role_user',
+            'customers',
+            'posts',
+            'identifications',
+            'neighborhoods',
+            'locations',
+            'municipalities',
+            'departaments',
+            'countries',
+            'identifications'
         ]);
         $this->call([
             PermissionsTableSeeder::class,
+            CountryTableSeeder::class,
+            DepartamentTableSeeder::class,
+            MunicipalityTableSeeder::class,
+            LocationTableSeeder::class,
+            NeighborhoodTableSeeder::class,
+            IdentificationTableSeeder::class,
+            CivilstatusTableSeeder::class,
+            CustomersTableSeeder::class,
             UserTableSeeder::class
         ]);
     }
