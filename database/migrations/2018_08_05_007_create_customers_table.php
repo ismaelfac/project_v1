@@ -10,9 +10,6 @@ class CreateCustomersTable extends Migration
       {
             Schema::create('customers', function (Blueprint $table) {
                   $table->increments('id');
-                  $table->string('customer_wasi_id', 20)->nullable();
-                  $table->string('user_wasi_id', 20)->nullable();
-                  $table->string('user_id', 20)->nullable();
                   $table->string('last_name');
                   $table->string('first_name');
                   $table->string('slug');
@@ -43,8 +40,6 @@ class CreateCustomersTable extends Migration
                   $table->string('longitude')->nullable();
                   $table->date('birthdate');
                   $table->enum('state_customer', ['Activo', 'Inactivo', 'Suspendido'])->default('Inactivo');
-                  $table->dateTime('created_at_wasi');
-                  $table->dateTime('updated_at_wasi');
                   $table->timestamps();
                   $table->softDeletes();
             });
