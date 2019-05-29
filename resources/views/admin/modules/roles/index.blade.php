@@ -1,16 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                @foreach ($roles as $rol)
-                    <td>{{ $rol->name }}</td>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+    <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Roles</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Ticket</a>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+
+  </div>
+
 @endsection
