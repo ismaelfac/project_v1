@@ -61,7 +61,7 @@
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Sistema:</h6>
-          <a class="collapse-item" href="{{ url('/') }}">Permisos</a>
+          <a class="collapse-item" href="{{ url('/admin/permissions') }}">Permisos</a>
           <a class="collapse-item" href="{{ url('/admin/roles') }}">Roles</a>
           <a class="collapse-item" href="{{ url('/') }}">Usuarios</a>
           <a class="collapse-item" href="{{ url('/') }}">Otros</a>

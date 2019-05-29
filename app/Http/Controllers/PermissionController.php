@@ -10,7 +10,7 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::paginate(5);
-        return view('admin2.modules.permissions.index', compact('permissions'));
+        return view('admin.modules.permissions.index', compact('permissions'));
     }
     /**
      * Show the form for creating a new resource.
@@ -21,7 +21,7 @@ class PermissionController extends Controller
     {
         $roles_unique = Role::where('special', 'all-access')->orWhere('special', 'no-access')->get();
         $roles_personalized = Role::where('special', null)->paginate(5);
-        return view('admin2.modules.users.create', compact('roles_unique', 'roles_personalized'));
+        return view('admin.modules.users.create', compact('roles_unique', 'roles_personalized'));
     }
 
     /**
@@ -44,7 +44,7 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        return view('admin2.modules.permissions.edit', compact('permission'));
+        return view('admin.modules.permissions.edit', compact('permission'));
     }
 
     /**
