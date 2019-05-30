@@ -19,10 +19,8 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $id = Auth::id();
-        //dd($request->get('name'));
         $users = User::name($request->get('name'))->with('roles')->whereNotIn('id', ['1', $id])->orderBy('updated_at', 'DESC')->paginate(5);
-        //dd($users);
-        return view('admin2.modules.users.index', compact('users', 'title'));
+        return view('admin.modules.users.index', compact('users'));
     }
     /**
      * Show the form for creating a new resource.
@@ -33,7 +31,7 @@ class UserController extends Controller
     {
         $roles_unique = Role::where('special', 'all-access')->orWhere('special', 'no-access')->get();
         $roles_personalized = Role::where('special', null)->paginate(5);
-        return view('admin2.modules.users.create', compact('roles_unique', 'roles_personalized'));
+        return view('admin.modules.users.create', compact('roles_unique', 'roles_personalized'));
     }
 
     /**
@@ -48,7 +46,6 @@ class UserController extends Controller
             'name' => ($request->last_name . ' ' . $request->first_name),
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'entry' => 'portal',
             'is_active' => $request->is_active
         ]);
         $user->roles()->sync($request->get('roles_personalized')); //update roles
@@ -64,8 +61,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $roles_unique = ($user->isAdministrador() ? $this->getRoles_inv($user) : Role::find($user)->where('special', null));
-        //dd($roles_unique);
-        return view('admin2.modules.users.show', compact('user', 'roles_unique'));
+        return view('admin.modules.users.show', compact('user', 'roles_unique'));
     }
     public function getRoles_inv($user)
     {
@@ -82,7 +78,7 @@ class UserController extends Controller
     {
         $roles_unique = ($user->isAdministrador() ? $this->getRoles_inv() : Role::find($user));
         $roles_personalized = Role::where('special', null)->paginate(5);
-        return view('admin2.modules.users.edit', compact('user', 'roles_unique', 'roles_personalized'));
+        return view('admin.modules.users.edit', compact('user', 'roles_unique', 'roles_personalized'));
     }
 
     /**

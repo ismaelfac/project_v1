@@ -30,7 +30,7 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-fw fa-cog"></i>
-        <span>Components</span>
+        <span>Modulos</span>
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
@@ -49,22 +49,8 @@
       </a>
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Parametros:</h6>
-          <a class="collapse-item" href="{{ url('/') }}">Identificación</a>
-          <a class="collapse-item" href="{{ url('/') }}">Pais</a>
-          <a class="collapse-item" href="{{ url('/') }}">Estado</a>
-          <a class="collapse-item" href="{{ url('/') }}">Ciudad</a>
-          <a class="collapse-item" href="{{ url('/') }}">Localidad</a>
-          <a class="collapse-item" href="{{ url('/') }}">Barrio</a>
-        </div>
-      </div>
-      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Sistema:</h6>
-          <a class="collapse-item" href="{{ url('/admin/permissions') }}">Permisos</a>
-          <a class="collapse-item" href="{{ url('/admin/roles') }}">Roles</a>
-          <a class="collapse-item" href="{{ url('/') }}">Usuarios</a>
-          <a class="collapse-item" href="{{ url('/') }}">Otros</a>
+          <h6 class="collapse-header"><a class="collapse-item" href="{{ url('/admin/parameters') }}">Parametros:</a></h6>
+          <h6 class="collapse-header"><a class="collapse-item" href="{{ url('/admin/systems') }}">Sistema:</a></h6>
         </div>
       </div>
     </li>
