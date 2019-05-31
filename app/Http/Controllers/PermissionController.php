@@ -9,7 +9,7 @@ class PermissionController extends Controller
 {
     public function index()
     {
-        $permissions = Permission::all();
+        $permissions = Permission::paginate(5);
         //dd($permissions);
         return view('admin.modules.permissions.index', compact('permissions'));
     }

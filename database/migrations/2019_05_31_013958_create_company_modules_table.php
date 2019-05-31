@@ -15,13 +15,11 @@ class CreateCompanyModulesTable extends Migration
     {
         Schema::create('company_modules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('company_id')->unsigned()->index();
+            $table->integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies')
-                ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->integer('module_id')->unsigned()->index();
+            $table->integer('module_id')->unsigned();
             $table->foreign('module_id')->references('id')->on('modules')
-                ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
