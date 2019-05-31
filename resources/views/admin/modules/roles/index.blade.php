@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('admin.dashboardSystem')
 
-@section('content')
+@section('contentSystem')
   <!-- Content Row -->
   <div class="row">
     <div class="container-fluid">

@@ -3,7 +3,7 @@
 @section('contentSystem')
     <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Usuarios</h1>
+    <h1 class="h3 mb-0 text-gray-800">Modulos</h1>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Ticket</a>
   </div>
 
@@ -22,27 +22,26 @@
                 <tr>
                   <th>Titulo</th>
                   <th>Descripción</th>
-                  <th>Especial</th>
+                  <th>Estado</th>
                   <th>Creación</th>
                   <th>Opciones</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Nombre Completos</th>
-                  <th>Email</th>
-                  <th>Estado</th>
-                  <th>Creación</th>
-                  <th>Opciones</th>
+                    <th>Titulo</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Creación</th>
+                    <th>Opciones</th>
                 </tr>
               </tfoot>
               <tbody>
-                @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ (($user->is_active)?'Activo':'Inactivo') }}</td>
-                    <td>{{ $user->created_at }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-success btn-sm">
@@ -57,7 +56,6 @@
                           </div>
                     </td>
                   </tr>
-                @endforeach
               </tbody>
             </table>
           </div>

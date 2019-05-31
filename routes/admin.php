@@ -13,8 +13,8 @@ Route::put('admin/posts/{post}', function (Post $post, Request $request) {
 });
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('parameters', 'DashboardSystemController@index');
-    Route::get('systems', 'DashboardParametersController@index');
+    Route::get('systems', 'DashboardSystemController@index');
+    Route::get('parameters', 'DashboardParametersController@index');
     Route::resource('roles', 'RoleController');
     Route::resource('permissions', 'PermissionController');
     Route::resource('users', 'UserController');
