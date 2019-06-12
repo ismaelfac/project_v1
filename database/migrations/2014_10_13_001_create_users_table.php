@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -21,7 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('is_active')->default(false);
-            $table->unsignedInteger('client_id');
+            $table->integer('customer_id');
+            $table->foreign('customer_id')->references('dni')->on('customers')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
