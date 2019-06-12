@@ -14,13 +14,11 @@ class CreateCompanyModulesTable extends Migration
     public function up()
     {
         Schema::create('company_modules', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies')
-                ->onUpdate('cascade');
-            $table->integer('module_id')->unsigned();
-            $table->foreign('module_id')->references('id')->on('modules')
-                ->onUpdate('cascade');
+            $table->increments('id');
+            $table->unsignedInteger('company_id')->index();
+            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
+            $table->unsignedInteger('module_id');
+            $table->foreign('module_id')->references('id')->on('modules')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

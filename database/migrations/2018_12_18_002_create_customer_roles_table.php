@@ -15,8 +15,8 @@ class CreateCustomerRolesTable extends Migration
     {
         Schema::create('customer_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('customer_id')->unsigned()->index();
-            $table->foreign('customer_id')->references('id')->on('customers')
+            $table->unsignedInteger('customer_id')->index();
+            $table->foreign('customer_id')->references('dni')->on('customers')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();

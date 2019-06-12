@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('is_active')->default(false);
+            $table->unsignedInteger('client_id');
             $table->timestamps();
             $table->softDeletes();
         });

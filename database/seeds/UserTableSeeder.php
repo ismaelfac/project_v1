@@ -43,21 +43,24 @@ class UserTableSeeder extends Seeder
             'name' => 'ISMAEL E. LASTRE ALVAREZ',
             'email' => 'ismaelfac@gmail.com',
             'password' => bcrypt('BrwQ12-123'),
-            'is_active' => true
+            'is_active' => true,
+            'user_id' =>  1
         ]);
         $user->roles()->sync([1 => ['is_active' => true]]); //update roles
         $user = User::create([
             'name' => 'SINFOROSO GUMERSINDO',
             'email' => 'director@mail.com',
             'password' => bcrypt('123'),
-            'is_active' => true
+            'is_active' => true,
+            'user_id' =>  2
         ]);
         $user->roles()->sync([1 => ['is_active' => true]]); //update roles
         $user = User::create([
             'name' => 'EMPERATRIS BENAVIDEZ ',
             'email' => 'asistentecomercial@MAIL.com',
             'password' => bcrypt('123'),
-            'is_active' => true
+            'is_active' => true,
+            'user_id' =>  3
         ]);
         $user->roles()->sync([3 => ['is_active' => true],4]); //update roles 3, 4 en usuario3
     

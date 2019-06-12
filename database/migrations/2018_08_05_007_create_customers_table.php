@@ -9,14 +9,12 @@ class CreateCustomersTable extends Migration
       public function up()
       {
             Schema::create('customers', function (Blueprint $table) {
-                  $table->increments('id');
+                  $table->unsignedInteger('dni', 30);
+                  $table->integer('type_dni')->unsigned();
+                  $table->foreign('type_dni')->references('id')->on('identifications')->onUpdate('cascade');
                   $table->string('last_name');
                   $table->string('first_name');
                   $table->string('slug');
-                  $table->integer('type_dni')->unsigned();
-                  $table->foreign('type_dni')->references('id')->on('identifications')
-                        ->onUpdate('cascade');
-                  $table->string('dni', 15);
                   $table->string('phone')->nullable();
                   $table->string('landline')->nullable();
                   $table->string('email', 60)->unique();
