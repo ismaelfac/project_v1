@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('is_active')->default(false);
-            $table->integer('customer_id');
+            $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('dni')->on('customers')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
